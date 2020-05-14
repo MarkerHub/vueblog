@@ -27,6 +27,9 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * shiro启用注解拦截控制器
+ */
 @Configuration
 public class ShiroConfig {
 

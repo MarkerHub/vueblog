@@ -27,6 +27,10 @@ public class AccountController {
     @Autowired
     UserService userService;
 
+    /**
+     * 默认账号密码：markerhub / 111111
+     *
+     */
     @CrossOrigin
     @PostMapping("/login")
     public Result login(@Validated @RequestBody LoginDto loginDto, HttpServletResponse response) {

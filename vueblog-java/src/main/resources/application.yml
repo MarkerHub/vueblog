@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/markerhub?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/vueblog?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
     username: root
     password: admin
 mybatis-plus:
@@ -19,4 +19,4 @@ markerhub:
     secret: f4e2e52034348f86b67cde581c0f9eb5
     # token有效时长，7天，单位秒
     expire: 604800
-    header: token
+    header: Authorization
