@@ -30,7 +30,7 @@ public class Blog implements Serializable {
 
     private String title;
 
-    private String summary;
+    private String description;
 
     private String content;
 
