@@ -1,15 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
+import BlogDetail from '../views/BlogDetail.vue'
+import BlogEdit from '../views/BlogEdit.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Login',
-    component: Login
+    name: 'Index',
+    redirect: { name: 'Blogs' }
   },
   {
     path: '/login',
@@ -23,10 +24,25 @@ const routes = [
     component: () => import('../views/Blogs.vue')
   },
   {
-    path: '/about',
-    name: 'About',
-    // 懒加载
-    component: () => import('../views/About.vue')
+    path: '/blog/:blogId',
+    name: 'BlogDetail',
+    component: BlogDetail
+  },
+  {
+    path: '/blog/add',
+    name: 'BlogEdit',
+    meta: {
+      requireAuth: true
+    },
+    component: BlogEdit
+  },
+  {
+    path: '/blog/:blogId/edit',
+    name: 'BlogEdit',
+    meta: {
+      requireAuth: true
+    },
+    component: BlogEdit
   }
 ];
 

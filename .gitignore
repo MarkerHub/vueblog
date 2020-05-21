@@ -13,6 +13,10 @@
 **/.idea/**
 **/target/**
 
+**/node_modules/**
+
+**/*.iml
+
 *.iml
 
 # Package Files #

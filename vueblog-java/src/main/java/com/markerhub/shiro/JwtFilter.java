@@ -1,8 +1,6 @@
 package com.markerhub.shiro;
 
-import cn.hutool.http.HttpStatus;
 import cn.hutool.json.JSONUtil;
-import com.baomidou.mybatisplus.extension.api.R;
 import com.markerhub.common.lang.Result;
 import com.markerhub.util.JwtUtils;
 import io.jsonwebtoken.Claims;

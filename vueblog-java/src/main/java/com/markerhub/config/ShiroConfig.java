@@ -97,7 +97,7 @@ public class ShiroConfig {
     }
 
 
-    // 注解代理
+    // 开启注解代理
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager){
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
