@@ -6,10 +6,11 @@ import store from './store'
 import Element from 'element-ui'
 import editor from "mavon-editor";
 
-import  "element-ui/lib/theme-chalk/index.css"
+import "element-ui/lib/theme-chalk/index.css"
 import 'mavon-editor/dist/css/index.css'
 
-import './permission.js'
+import './permission.js' // 路由拦截
+import './axios.js' // 请求拦截
 
 Vue.use(Element)
 Vue.use(editor)
@@ -22,3 +23,4 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+

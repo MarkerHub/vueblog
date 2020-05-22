@@ -4,11 +4,10 @@
 
     <div class="mblog">
       <h2>{{ blog.title }}</h2>
+      <el-link icon="el-icon-edit" v-if="ownBlog"><router-link :to="{name: 'BlogEdit', params: {blogId: blog.id}}">编辑</router-link></el-link>
       <el-divider></el-divider>
       <div class="content markdown-body" v-html="blog.content"></div>
     </div>
-
-
   </div>
 </template>
 
@@ -24,16 +23,13 @@
     },
     data() {
       return {
-        user: {
-          username: null,
-          avatar: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
-        },
         blog: {
-          title: "这是标题",
-          description: "这是再要",
-          content: "这是内容呀"
-
-        }
+          userId: null,
+          title: "",
+          description: "",
+          content: ""
+        },
+        ownBlog: false
       }
     },
     methods: {
@@ -50,13 +46,11 @@
           var result = md.render(_this.blog.content);
           _this.blog.content = result
 
+          _this.ownBlog =  true
         });
       }
     },
     created() {
-      this.user.username = this.$store.getters.getUser.username
-      this.user.avatar = this.$store.getters.getUser.avatar
-
       this.getBlog()
     }
   }
@@ -79,4 +73,8 @@
     padding: 20px 15px;
     min-height: 700px;
   }
+  .m-button {
+    /*float: right;*/
+  }
+
 </style>

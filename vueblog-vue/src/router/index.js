@@ -24,17 +24,17 @@ const routes = [
     component: () => import('../views/Blogs.vue')
   },
   {
-    path: '/blog/:blogId',
-    name: 'BlogDetail',
-    component: BlogDetail
-  },
-  {
-    path: '/blog/add',
-    name: 'BlogEdit',
+    path: '/blog/add', // 注意放在 path: '/blog/:blogId'之前
+    name: 'BlogAdd',
     meta: {
       requireAuth: true
     },
     component: BlogEdit
+  },
+  {
+    path: '/blog/:blogId',
+    name: 'BlogDetail',
+    component: BlogDetail
   },
   {
     path: '/blog/:blogId/edit',

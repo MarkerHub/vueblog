@@ -11,7 +11,7 @@
         <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px"
                  class="demo-ruleForm">
           <el-form-item label="用户名" prop="username">
-            <el-input type="text" maxlength="6" v-model="ruleForm.username"></el-input>
+            <el-input type="text" maxlength="12" v-model="ruleForm.username"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="password">
             <el-input type="password" v-model="ruleForm.password" autocomplete="off"></el-input>
@@ -40,7 +40,7 @@
       };
       return {
         ruleForm: {
-          password: '111111',
+          password: '111112',
           username: 'markerhub'
         },
         rules: {
@@ -60,7 +60,7 @@
         this.$refs[formName].validate((valid) => {
           if (valid) {
             // 提交逻辑
-            this.$axios.post('http://localhost:8081/login', this.ruleForm).then((res)=>{
+            this.$axios.post('/login', this.ruleForm).then((res)=>{
               const token = res.headers['authorization']
               console.log(res)
               console.log(res.data.data.username)
@@ -87,7 +87,7 @@
       this.$notify({
         title: '看这里：',
         message: '关注公众号：MarkerHub，回复【vueblog】，领取项目资料与源码',
-        duration: 0
+        duration: 1500
       });
     }
   }

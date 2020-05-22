@@ -35,10 +35,6 @@
     components: {Header},
     data() {
       return {
-        user: {
-          username: null,
-          avatar: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
-        },
         editForm: {
           title: '测试标题',
           description: '测试内容',
