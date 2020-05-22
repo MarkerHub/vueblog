@@ -40,7 +40,7 @@
       };
       return {
         ruleForm: {
-          password: '111112',
+          password: '111111',
           username: 'markerhub'
         },
         rules: {

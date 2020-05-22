@@ -36,6 +36,7 @@
     data() {
       return {
         editForm: {
+          id: null,
           title: '测试标题',
           description: '测试内容',
           content: '> [更多引入方式点击这里...](/mavonEditor/doc/cn/use.html)\n' +
@@ -59,6 +60,7 @@
       if(blogId) {
         this.$axios.get('http://localhost:8081/blog/' + blogId).then((res) => {
           const blog = res.data.data
+          _this.editForm.id = blog.id
           _this.editForm.title = blog.title
           _this.editForm.description = blog.description
           _this.editForm.content = blog.content
