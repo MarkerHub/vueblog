@@ -14,7 +14,15 @@
         </el-timeline-item>
 
       </el-timeline>
+     
     </div>
+    <el-pagination class="mpage"
+      background
+      layout="prev, pager, next"
+      :current-page=currentPage
+      @current-change=page
+      :total="total">
+    </el-pagination>
   </div>
 
 </template>
@@ -34,7 +42,7 @@
     methods: {
       page(currentPage) {
         const _this = this
-        this.$axios.get('http://localhost:8081/blogs').then((res) => {
+        this.$axios.get('http://localhost:8081/blogs?currentPage=' + currentPage).then((res) => {
           console.log(res.data.data.records)
           _this.blogs = res.data.data.records
           _this.currentPage = res.data.data.current
@@ -60,5 +68,10 @@
 
   .maction {
     margin: 10px 0;
+  }
+
+  .mpage {
+    text-align: center;
+    margin: 38px 0;
   }
 </style>
