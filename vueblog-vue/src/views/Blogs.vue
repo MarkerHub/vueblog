@@ -20,6 +20,7 @@
       background
       layout="prev, pager, next"
       :current-page=currentPage
+      :page-size=pageSize
       @current-change=page
       :total="total">
     </el-pagination>
@@ -36,17 +37,19 @@
       return {
         blogs: {},
         currentPage: 1,
-        total: 0
+        total: 0,
+        pageSize: 5
       }
     },
     methods: {
       page(currentPage) {
         const _this = this
-        this.$axios.get('http://localhost:8081/blogs?currentPage=' + currentPage).then((res) => {
+        this.$axios.get('/blogs?currentPage=' + currentPage).then((res) => {
           console.log(res.data.data.records)
           _this.blogs = res.data.data.records
           _this.currentPage = res.data.data.current
           _this.total = res.data.data.total
+          _this.pageSize = res.data.data.size
         })
       }
     },

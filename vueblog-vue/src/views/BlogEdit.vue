@@ -37,11 +37,9 @@
       return {
         editForm: {
           id: null,
-          title: '测试标题',
-          description: '测试内容',
-          content: '> [更多引入方式点击这里...](/mavonEditor/doc/cn/use.html)\n' +
-            '\n' +
-            '> [如何获取并设置markdown-it对象...](/mavonEditor/doc/cn/markdown.html)'
+          title: '',
+          description: '',
+          content: ''
         },
         rules: {
           title: [
@@ -58,7 +56,7 @@
       const blogId = this.$route.params.blogId
       const _this = this
       if(blogId) {
-        this.$axios.get('http://localhost:8081/blog/' + blogId).then((res) => {
+        this.$axios.get('/blog/' + blogId).then((res) => {
           const blog = res.data.data
           _this.editForm.id = blog.id
           _this.editForm.title = blog.title
@@ -75,7 +73,7 @@
         this.$refs.editForm.validate((valid) => {
           if (valid) {
 
-            this.$axios.post('http://localhost:8081/blog/edit', this.editForm, {
+            this.$axios.post('/blog/edit', this.editForm, {
               headers: {
                 "Authorization": localStorage.getItem("token")
               }

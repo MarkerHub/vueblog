@@ -36,7 +36,7 @@
       getBlog() {
         const blogId = this.$route.params.blogId
         const _this = this
-        this.$axios.get('http://localhost:8081/blog/' + blogId).then((res) => {
+        this.$axios.get('/blog/' + blogId).then((res) => {
           console.log(res)
           console.log(res.data.data)
           _this.blog = res.data.data
@@ -46,7 +46,8 @@
           var result = md.render(_this.blog.content);
           _this.blog.content = result
 
-          _this.ownBlog =  true
+          // 判断是否是自己的文章，能否编辑
+          _this.ownBlog =  (_this.blog.userId === _this.$store.getters.getUser.id)
         });
       }
     },

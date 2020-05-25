@@ -27,7 +27,7 @@ public class BlogController {
 
         if(currentPage == null || currentPage < 1) currentPage = 1;
 
-        Page page = new Page(currentPage, 10);
+        Page page = new Page(currentPage, 5);
         IPage pageData = blogService.page(page, new QueryWrapper<Blog>().orderByDesc("created"));
 
         return Result.succ(pageData);
