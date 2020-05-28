@@ -1,5 +1,3 @@
-server:
-  port: 8081
 # DataSource Config
 spring:
   datasource:
@@ -9,14 +7,16 @@ spring:
     password: admin
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**Mapper.xml
+server:
+  port: 8081
 shiro-redis:
   enabled: true
   redis-manager:
     host: 127.0.0.1:6379
 markerhub:
   jwt:
-    # åŠ å¯†ç§˜é’¥
+    # ¼ÓÃÜÃØÔ¿
     secret: f4e2e52034348f86b67cde581c0f9eb5
-    # tokenæœ‰æ•ˆæ—¶é•¿ï¼Œ7å¤©ï¼Œå•ä½ç§’
+    # tokenÓĞĞ§Ê±³¤£¬7Ìì£¬µ¥Î»Ãë
     expire: 604800
     header: Authorization

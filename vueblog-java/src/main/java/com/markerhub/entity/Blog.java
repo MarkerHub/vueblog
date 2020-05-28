@@ -1,17 +1,16 @@
 package com.markerhub.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import java.io.Serializable;
-
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -19,7 +18,7 @@ import javax.validation.constraints.NotBlank;
  * </p>
  *
  * @author 关注公众号：MarkerHub
- * @since 2020-05-14
+ * @since 2020-05-25
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -43,7 +42,7 @@ public class Blog implements Serializable {
     @NotBlank(message = "内容不能为空")
     private String content;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDateTime created;
 
     private Integer status;

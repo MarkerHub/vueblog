@@ -1,6 +1,5 @@
 package com.markerhub.common.dto;
 
-import com.markerhub.entity.User;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;

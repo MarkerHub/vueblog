@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
-import BlogDetail from '../views/BlogDetail.vue'
+import Blogs from '../views/Blogs.vue'
 import BlogEdit from '../views/BlogEdit.vue'
+import BlogDetail from '../views/BlogDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -10,7 +11,12 @@ const routes = [
   {
     path: '/',
     name: 'Index',
-    redirect: { name: 'Blogs' }
+    redirect: {name: "Blogs"}
+  },
+  {
+    path: '/blogs',
+    name: 'Blogs',
+    component: Blogs
   },
   {
     path: '/login',
@@ -18,18 +24,12 @@ const routes = [
     component: Login
   },
   {
-    path: '/blogs',
-    name: 'Blogs',
-    // 懒加载
-    component: () => import('../views/Blogs.vue')
-  },
-  {
-    path: '/blog/add', // 注意放在 path: '/blog/:blogId'之前
+    path: '/blog/add',
     name: 'BlogAdd',
+    component: BlogEdit,
     meta: {
       requireAuth: true
-    },
-    component: BlogEdit
+    }
   },
   {
     path: '/blog/:blogId',
@@ -39,12 +39,12 @@ const routes = [
   {
     path: '/blog/:blogId/edit',
     name: 'BlogEdit',
+    component: BlogEdit,
     meta: {
       requireAuth: true
-    },
-    component: BlogEdit
+    }
   }
-];
+]
 
 const router = new VueRouter({
   mode: 'history',

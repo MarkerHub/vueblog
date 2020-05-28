@@ -28,11 +28,10 @@ public class JwtFilter extends AuthenticatingFilter {
 
     @Override
     protected AuthenticationToken createToken(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
-        // 获取 token
+
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         String jwt = request.getHeader("Authorization");
-
-        if(StringUtils.isEmpty(jwt)){
+        if(StringUtils.isEmpty(jwt)) {
             return null;
         }
 
@@ -43,49 +42,42 @@ public class JwtFilter extends AuthenticatingFilter {
     protected boolean onAccessDenied(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        String token = request.getHeader("Authorization");
-
-        if(StringUtils.isEmpty(token)) {
-//            HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
-//
-//            String json = JSONUtil.toJsonStr(Result.fail(HttpStatus.HTTP_UNAUTHORIZED, "invalid token", null));
-//            httpResponse.getWriter().print(json);
+        String jwt = request.getHeader("Authorization");
+        if(StringUtils.isEmpty(jwt)) {
             return true;
         } else {
 
-            // 判断是否已过期
-            Claims claim = jwtUtils.getClaimByToken(token);
+            // 校验jwt
+            Claims claim = jwtUtils.getClaimByToken(jwt);
             if(claim == null || jwtUtils.isTokenExpired(claim.getExpiration())) {
-                throw new ExpiredCredentialsException("token已失效，请重新登录！");
+                throw new ExpiredCredentialsException("token已失效，请重新登录");
             }
-        }
 
-        // 执行自动登录
-        return executeLogin(servletRequest, servletResponse);
+            // 执行登录
+            return executeLogin(servletRequest, servletResponse);
+        }
     }
 
     @Override
     protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException e, ServletRequest request, ServletResponse response) {
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
-        try {
-            //处理登录失败的异常
-            Throwable throwable = e.getCause() == null ? e : e.getCause();
-            Result r = Result.fail(throwable.getMessage());
 
-            String json = JSONUtil.toJsonStr(r);
-            httpResponse.getWriter().print(json);
-        } catch (IOException e1) {
+        HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+
+        Throwable throwable = e.getCause() == null ? e : e.getCause();
+        Result result = Result.fail(throwable.getMessage());
+        String json = JSONUtil.toJsonStr(result);
+
+        try {
+            httpServletResponse.getWriter().print(json);
+        } catch (IOException ioException) {
 
         }
-
         return false;
     }
 
-    /**
-     * 对跨域提供支持
-     */
     @Override
     protected boolean preHandle(ServletRequest request, ServletResponse response) throws Exception {
+
         HttpServletRequest httpServletRequest = WebUtils.toHttp(request);
         HttpServletResponse httpServletResponse = WebUtils.toHttp(response);
         httpServletResponse.setHeader("Access-control-Allow-Origin", httpServletRequest.getHeader("Origin"));
@@ -96,6 +88,7 @@ public class JwtFilter extends AuthenticatingFilter {
             httpServletResponse.setStatus(org.springframework.http.HttpStatus.OK.value());
             return false;
         }
+
         return super.preHandle(request, response);
     }
 }
