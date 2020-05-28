@@ -16,7 +16,7 @@
 
 ### 项目文档：
 
-开发文档：
+开发文档：https://juejin.im/post/5ecfca676fb9a04793456fb8
 
 讲解视频：https://www.bilibili.com/video/BV1PQ4y1P7hZ/
 
