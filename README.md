@@ -10,17 +10,21 @@
 
 ### 项目效果：
 
-![图片](https://uploader.shimo.im/f/Yvgk3fheE74eMoXJ.png!thumbnail)
+![图片](//image-1300566513.cos.ap-guangzhou.myqcloud.com/upload/images/20200613/b1c18a3fe33544578971c3a15d0d9425.png)
 
-![图片](https://uploader.shimo.im/f/uvsAYsB8HVpLGS9o.png!thumbnail)
+![图片](//image-1300566513.cos.ap-guangzhou.myqcloud.com/upload/images/20200613/5e291faeaef648af87b8b33483eef5bd.png)
+
 
 ### 项目文档：
 
 开发文档：https://juejin.im/post/5ecfca676fb9a04793456fb8
 
-讲解视频：https://www.bilibili.com/video/BV1PQ4y1P7hZ/
+vue入门视频：https://www.bilibili.com/video/BV125411W73W/
+
+vueblog讲解视频：https://www.bilibili.com/video/BV1PQ4y1P7hZ/
 
 关注我的B站，后续陆续还有
+
 * 前后端分离类百度搜索引擎项目
 * 即时聊天等项目
 
