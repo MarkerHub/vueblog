@@ -52,6 +52,8 @@ public class BlogController {
     @PostMapping("/blog/edit")
     public Result edit(@Validated @RequestBody Blog blog) {
 
+//        Assert.isTrue(false, "公开版不能任意编辑！");
+
         Blog temp = null;
         if(blog.getId() != null) {
             temp = blogService.getById(blog.getId());
